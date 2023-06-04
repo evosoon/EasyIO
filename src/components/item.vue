@@ -1,0 +1,75 @@
+<template>
+    <div class="item flex">
+        <button class="btn" @mouseover="$emit('getItem', item)">快速查看</button>
+        <a
+            @click.stop="$emit('getItem', item)"
+            :class="{ chickClass: item.name == props.ChickFlag }"
+            >{{ props.item.name }}</a
+        >
+        <button class="btn" v-if="flag" @click="flag = !flag">删除</button>
+        <template v-else>
+            <button class="btn" @click="deleteItem(props.item.path)">确定</button>
+            <button class="btn" @click="flag = !flag">取消</button>
+        </template>
+    </div>
+</template>
+
+<script setup>
+import { ref, defineProps,defineEmits } from "vue";
+import { delPicItem } from "@/apis/pictureApi";
+const props = defineProps(["item","ChickFlag"]);
+const emit = defineEmits(['getPicListFun'])
+let flag = ref(true);
+async function deleteItem(path) {
+    
+    let pathD = path.slice(33);
+    try {
+        let data = await delPicItem(pathD);
+        openSuccess(data.message)
+        emit('getPicListFun')
+    } catch (e) {
+        openError(e)
+    }
+}
+// 成功弹窗
+const openSuccess = (value) => {
+  ElMessage({
+    message: value,
+    type: 'success',
+  })
+}
+const openError = (value) => {
+  ElMessage.error(value)
+}
+</script>
+  
+<style lang="scss" scoped>
+.item {
+    height: 40px;
+    margin: 0 10px 5px 0;
+    align-items: center;
+    border-bottom: 1px solid rgb(203, 203, 203);
+    overflow: hidden;
+    .chickClass {
+        color: var(--color);
+    }
+    a {
+        flex: 8;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    a:hover {
+        color: var(--color);
+    }
+    .btn {
+        border: 1px solid var(--color);
+        border-radius: 10px;
+        height: 20px;
+        text-align: center;
+        padding: 0 10px;
+        min-width: 50px;
+        margin: 0 5px;
+    }
+}
+</style>

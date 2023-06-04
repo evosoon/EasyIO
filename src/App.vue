@@ -6,5 +6,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
+<style lang="scss">
+body{
+  overflow: hidden;
+}
 </style>

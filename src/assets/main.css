@@ -1,35 +1,89 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+:root{
+   --color:rgb(165, 143, 255);
+   --background:rgb(255, 255, 255);
+   --bgColor:rgb(225, 211, 255);
+   --gray:#e8e8e8;
+   --black:#555;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+.flex{
+  display: flex;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.btn {
+  text-align: center;
+  background-color: var(--background);
+  border: 1px solid var(--bgColor);
+  border-radius: 2px;
+  color: var(--color);
+}
+.btn:hover {
+  cursor:pointer; 
+  background-color: var(--bgColor);
+  box-shadow: 0 0 5px 1px var(--bgColor);
+  color: var(--color);
+}
+.btn:disabled {
+  background-color: var(--background);
+  border: 1px solid var(--bgColor);
+  color: var(--bgColor);
+}
+.btn:active {
+  background-color: var(--bgColor);
+  box-shadow: 0 0 5px 3px var(--bgColor);
+}
+/*  */
+
+.transition-enter-from,
+.transition-leave-to{
+    opacity: 0.2;
+}
+.transition-enter-active,
+.transition-leave-active {
+ transition: opacity 0.5s ease-out;
+}
+/*  */
+
+
+.fromRight-enter-active,
+.fromRight-leave-active {
+    transition: opacity 0.5s ease;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.fromRight-enter-from,
+.fromRight-leave-to {
+    opacity: 0;
+}
+.fromRight-enter-active .right {
+    transition: all 0.3s ease-in-out;
+    transition-delay: 0.15s;
+}
+.fromRight-leave-active .right {
+    transition: all 0.3s ease-in-out;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+.fromRight-enter-from .right,
+.fromRight-leave-to .right {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+.add {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(59, 24, 82, 0.1);
+  .right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 60%;
+      right: 0;
+      box-shadow: 0 0 5px 2px rgb(182, 182, 182);
+      background-color: var(--background);
   }
 }
