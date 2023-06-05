@@ -7,15 +7,16 @@ import App from './App.vue'
 import router from './router'
 
 import lazy from 'vue3-lazy'
-import lazyimg from '@/assets/imgs/white.jpg'
+import Loading from '@/assets/imgs/Loading.jpg'
+import Error from '@/assets/imgs/Error.jpg'
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
 app.use(lazy,{
-    error:lazyimg,
-    loading:lazyimg,
+    error:Error,
+    loading:Loading,
 })
 
 app.mount('#app')

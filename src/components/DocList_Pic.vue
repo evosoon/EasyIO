@@ -29,7 +29,7 @@
 import Zero from "@/components/zero.vue";
 import useCopylink from "@/hooks/useCopylink";
 import { delPicItem } from "@/apis/pictureApi";
-import { watchEffect, ref, reactive, defineProps, onMounted } from "vue";
+import { watchEffect, ref, reactive, onMounted } from "vue";
 //
 const vHight = {
     mounted:(el)=>{

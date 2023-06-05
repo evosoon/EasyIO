@@ -18,7 +18,6 @@
 
 <script setup>
 import bus from "@/utils/eventBus";
-import { ref, reactive, defineProps } from "vue";
 let props = defineProps(["checkItem"]);
 import useCopylink from '@/hooks/useCopylink'
 </script>
