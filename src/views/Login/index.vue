@@ -51,6 +51,7 @@
                         注册
                     </button>
                 </template>
+                <Loading v-if="!loading"></Loading>
             </div>
         </div>
     </div>
@@ -60,6 +61,7 @@
 import { ref, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { Login, Sign } from "@/apis/userApi";
+import Loading from '@/components/loading.vue'
 
 let username = ref("");
 let password = ref("");

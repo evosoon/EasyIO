@@ -5,7 +5,7 @@
                 <div v-hight  class="li" v-for="List in Lists">
                     <div class="item" v-for="item in List" :key="item.name">
                         <a class="picture" :href="item.path" target="_block">
-                            <img :src="item.path" alt="" />
+                            <img v-lazy="item.path" alt="" />
                         </a>
                         <div class="word flex">
                             <a

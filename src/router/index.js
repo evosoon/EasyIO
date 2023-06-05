@@ -20,18 +20,22 @@ const router = createRouter({
         },
         {path:'home',
         name:'home',
+        meta:{keepalive:false},
         component:()=>import('@/views/Home/home.vue'),
         },
         {path:'center',
           name:'center',
+          meta:{keepalive:true},
           component:()=>import("@/views/Home/homeCenter.vue")
         },
         {path:'user',
         name:'user',
+        meta:{keepalive:false},
         component:()=>import("@/views/Home/user.vue")
         },
         {path:'about',
           name:'about',
+          meta:{keepalive:false},
           component:()=>import("@/views/Home/about.vue")
         },
       ]

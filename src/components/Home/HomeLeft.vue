@@ -1,7 +1,7 @@
 <template>
   <div class="Left flex">
     <span class="user" @click="jump('/main/user')"><img src="@/assets/icon/customer-center.png"/></span>
-    <span class="home" @click="jump('/main/home')"><img src="@/assets/icon/home.png"/></span>
+    <span class="home" @click="jump('/main/')"><img src="@/assets/icon/home.png"/></span>
     <span class="home" @click="jump('/main/about')"><img src="@/assets/icon/about.png"/></span>
     <span class="home" @click="jump('/main/setting')"><img src="@/assets/icon/settings.png"/></span>
     <span class="exit" @click="[jump('/login'),outLogin()]"><img src="@/assets/icon/exit.png"/></span>
