@@ -5,10 +5,10 @@
                 <div class="title">广告位招租</div>
             </div>
             <div class="Right">
-                <div>{{ title }}</div>
-                <span @click="change()">切换至{{ changeTitle }}</span>
+                <div class="title flex">
+                      <div>登录</div>
+                </div>
                 <!-- 登录 -->
-                <template v-if="isLogin">
                     <input
                         type="text"
                         placeholder="请输入用户名"
@@ -21,36 +21,10 @@
                         name=""
                         v-model.trim="password"
                     />
-                    <div id="message">{{ message }}</div>
                     <button class="btn" @click="login" :disabled="canSub">
                         登录
                     </button>
-                </template>
                 <!-- 注册 -->
-                <template v-if="!isLogin">
-                    <input
-                        type="text"
-                        placeholder="请输入用户名"
-                        name=""
-                        v-model.trim="username"
-                    />
-                    <input
-                        type="password"
-                        placeholder="请输入密码"
-                        name=""
-                        v-model.trim="password"
-                    />
-                    <input
-                        type="text"
-                        placeholder="请输入手机号"
-                        name=""
-                        v-model.trim="phone"
-                    />
-                    <div id="message">{{ message }}</div>
-                    <button class="btn" @click="signIn" :disabled="cansign">
-                        注册
-                    </button>
-                </template>
                 <Loading v-if="!loading"></Loading>
             </div>
         </div>
@@ -62,37 +36,20 @@ import { ref, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { Login, Sign } from "@/apis/userApi";
 import Loading from '@/components/loading.vue'
+import {openSuccess , openError} from '@/hooks/usePOP'
 
 let username = ref("");
 let password = ref("");
 let loading = ref(true);
-let phone = ref("");
-let message = ref("");
 const router = useRouter();
 
-let isLogin = ref(true);
-
-let title = computed(() => {
-    return isLogin.value ? "登录" : "注册";
-});
-let changeTitle = computed(() => {
-    return isLogin.value ? "注册" : "登录";
-});
 let canSub = computed(
     () => !(username.value && password.value && loading.value)
 );
-let cansign = computed(
-    () => !(username.value && password.value && phone.value && loading.value)
-);
 
-function change() {
-    isLogin.value = !isLogin.value;
-    clear();
-}
 function clear() {
     username.value = "";
     password.value = "";
-    phone.value = "";
 }
 
 // 登录
@@ -114,43 +71,11 @@ async function login() {
         console.log(e);
         loading.value = true;
         clear();
-        openWarning("登陆失败");
+        openError("登陆失败");
     }
 }
 
-// 注册
-async function signIn() {
-    loading.value = false;
-    let info = {
-        username: username.value,
-        password: password.value,
-        phone_num: phone.value,
-    };
-    try {
-        const data = await Sign(info);
-        loading.value = true;
-        openSuccess(data.message);
-        clear();
-    } catch (e) {
-        loading.value = true;
-        openWarning("注册失败");
-        console.log(e);
-        clear();
-    }
-}
-const openSuccess = (value) => {
-    ElMessage({
-        message: value,
-        type: "success",
-    });
-};
-// 警告弹窗
-const openWarning = (value) => {
-    ElMessage({
-        message: value,
-        type: "warning",
-    });
-};
+
 </script>
 
 <style lang="scss" scopeds>
@@ -187,6 +112,19 @@ const openWarning = (value) => {
         justify-content: center;
         align-items: center;
         width: 100%;
+        .title{
+            width: 100%;
+            padding: 20px;
+            justify-content: space-between;
+            div{
+                font-size: 20px;
+            }
+            span{
+                font-size: 14px;
+                color:var(--black);
+            cursor:pointer; 
+        }
+        }
         .btn {
             color: var(--black);
             border: 0;

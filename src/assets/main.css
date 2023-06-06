@@ -2,10 +2,11 @@
 
 :root{
 
-  
-  --color: rgb(67, 89, 214);
+  --color: rgb(105, 118, 184);
   --background: rgb(255, 255, 255);
-  --bgColor: rgb(189, 198, 243);
+  --bgColor: rgb(190, 205, 235);
+  --barColor: rgb(114, 127, 194);
+  /* --hoverColor: rgb(220, 224, 245); */
 
 /* --color:rgb(165, 143, 255);
    --background:rgb(255, 255, 255);
@@ -24,24 +25,27 @@ a{
 .btn {
   text-align: center;
   background-color: var(--background);
-  border: 1px solid var(--bgColor);
+  border: 0 solid var(--bgColor);
+  border-bottom: 1px solid var(--gray);
   border-radius: 2px;
   color: var(--color);
+  transition: all 0.4s;
 }
 .btn:hover {
   cursor:pointer; 
-  background-color: var(--bgColor);
-  box-shadow: 0 0 5px 3px var(--gray);
+  /* background-color: var(--bgColor); */
+  background-image: linear-gradient( 30deg, rgb(180, 196, 227), rgb(201, 214, 240));
   color: var(--color);
+  opacity: 0.8;
 }
 .btn:disabled {
-  background-color: var(--background);
+  background-image: linear-gradient( 0deg, rgb(240, 240, 240), rgb(253, 253, 253));
   border: 1px solid var(--bgColor);
   color: var(--bgColor);
 }
 .btn:active {
-  background-color: var(--bgColor);
-  box-shadow: 0 0 5px 2px var(--bgColor);
+  opacity: 0.5;
+  border: 0;
 }
 /*  */
 

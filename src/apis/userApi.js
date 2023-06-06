@@ -21,9 +21,9 @@ export function Sign(data){
         data
     })
 }
-//获取用户
-export function getUser(){
-    return axiosInstance({
-        url:'/user/info'
-    })
-}
+// //获取用户
+// export function getUser(){
+//     return axiosInstance({
+//         url:'/user/info'
+//     })
+// }

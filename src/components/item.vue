@@ -15,11 +15,15 @@
 </template>
 
 <script setup>
-import { ref, defineProps,defineEmits } from "vue";
+import { ref,defineEmits } from "vue";
 import { delPicItem } from "@/apis/pictureApi";
+import {openSuccess , openError} from '@/hooks/usePOP'
+
 const props = defineProps(["item","ChickFlag"]);
 const emit = defineEmits(['getPicListFun'])
+// 删除标识
 let flag = ref(true);
+
 async function deleteItem(path) {
     
     let pathD = path.slice(33);
@@ -31,16 +35,7 @@ async function deleteItem(path) {
         openError(e)
     }
 }
-// 成功弹窗
-const openSuccess = (value) => {
-  ElMessage({
-    message: value,
-    type: 'success',
-  })
-}
-const openError = (value) => {
-  ElMessage.error(value)
-}
+
 </script>
   
 <style lang="scss" scoped>

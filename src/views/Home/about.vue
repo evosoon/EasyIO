@@ -1,7 +1,7 @@
 <template>
     <div class="About">
         <button class="btn" @click="back">返回</button>
-    <div class="center">关于我们:cutelargeCarrot</div>
+    <div class="center flex"><p>关于我们:cutelargeCarrot</p></div>
     </div>
 </template>
 
@@ -28,6 +28,15 @@ function back() {
         height: calc(100% - 50px);
         padding: 20px;
         font-size: 20px;
+        justify-content: center;
+        p{
+            height: 20px;
+        transition: all 1s;
+
+        }
+        p:hover{
+            color: var(--color);
+        }
     }
 }
 </style>

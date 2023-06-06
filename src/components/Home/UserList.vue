@@ -21,16 +21,20 @@
             <div>
                 确实删除 [ {{ delDocName }} ] ?删除后
                 此分区及其中的内容将不复存在
-                <button class="btn del" @click="delDoc(delDocName)">删除</button>
-                <button class="btn" @click="delAreaFlag = false">取消</button>
+                <button class="btn del" @click="delDoc(delDocName)">
+                    删除
+                </button>
+                <button class="btn close" @click="delAreaFlag = false">
+                    取消
+                </button>
             </div>
         </div>
     </teleport>
-
+    <!-- 主体 -->
     <div class="UserList flex">
         <span>{{ store.username }}</span>
-        <div class="btn" @click="getListFunc()">刷新</div>
-        <div class="btn" @click="addArea(true)">创建分组</div>
+        <div class="btn title" @click="getListFunc()">刷新</div>
+        <div class="btn title" @click="addArea(true)">创建分组</div>
         <div class="List">
             <div
                 v-for="item in List"
@@ -52,26 +56,41 @@
 import { onMounted, ref, watch, watchEffect } from "vue";
 import { useCounterStore } from "@/stores/user";
 import { getList, addList, delList } from "@/apis/pictureApi";
+import { openSuccess, openError } from "@/hooks/usePOP";
 import bus from "@/utils/eventBus.js";
+
 let store = useCounterStore();
 let List = ref([]);
-let ChickFlag = ref("");
 
+// 添加文件夹
 let addAreaFlag = ref(false);
-let newDocName = ref("");
 
-let delAreaFlag = ref(false);
-let delDocName = ref("");
+let newDocName = ref("");
 
 function addArea(val) {
     addAreaFlag.value = val;
 }
+
+// 删除文件夹
+let delAreaFlag = ref(false);
+
+let delDocName = ref("");
 
 function delArea(val) {
     delAreaFlag.value = true;
     delDocName.value = val;
 }
 
+let ChickFlag = ref("");
+
+watch(
+    () => store.username,
+    () => {
+        getListFunc();
+    }
+);
+
+// addList
 async function addDoc() {
     let identily = "公共空间";
     let newgroup = `${identily}/${store.username}/${newDocName.value}`;
@@ -85,6 +104,8 @@ async function addDoc() {
         console.log(e);
     }
 }
+
+// delList
 async function delDoc(value) {
     delAreaFlag.value = false;
     let identily = "公共空间";
@@ -97,20 +118,20 @@ async function delDoc(value) {
         console.log(e);
     }
 }
-watch(()=>store.username,()=>{getListFunc()})
 
+// getList
 async function getListFunc(userVal = store.username) {
-   try{
-     ChickFlag.value = ''
-    let identily = "公共空间";
-    let name = userVal;
-    let group = `${identily}/${name}`;
-    let data = await getList(group);
-    List.value = data.dirPaths;
-    Jump()
-   }catch(e){
-    console.log(e)
-   }
+    try {
+        ChickFlag.value = "";
+        let identily = "公共空间";
+        let name = userVal;
+        let group = `${identily}/${name}`;
+        let data = await getList(group);
+        List.value = data.dirPaths;
+        Jump();
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function Jump(val = null) {
@@ -121,31 +142,27 @@ function Jump(val = null) {
 onMounted(() => {
     getListFunc();
 });
-// 成功弹窗
-const openSuccess = (value) => {
-    ElMessage({
-        message: value,
-        type: "success",
-    });
-};
 </script>
 
 <style lang="scss" scoped>
 .UserList {
     flex-direction: column;
     height: 100%;
-    background-color: #ffffff;
+    background-color: var(--background);
+    overflow: hidden;
     span {
-        margin-top: 5px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: var(--background);
+        background-color: var(--color);
+        box-shadow: 0 0px 5px 1px var(--black);
+        opacity: 0.8;
+        margin-bottom: 5px;
+    }
+    .title {
         height: 40px;
         line-height: 40px;
-        text-align: center;
-        color: var(--color);
-    }
-    .btn {
-        margin: 5px 0;
-        height: 30px;
-        line-height: 30px;
     }
     .List {
         flex: 1;
@@ -154,20 +171,29 @@ const openSuccess = (value) => {
         overflow: auto;
         .item {
             display: flex;
-            padding: 0 10px;
+            padding: 5px;
+            height: 40px;
+            line-height: 30px;
+            margin: 0;
             justify-content: space-between;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
             .delbtn {
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: transparent;
+                height: 30px;
                 border: 0;
                 margin: 0;
                 padding: 0 5px;
             }
             .delbtn:hover {
-                background-color: rgb(255, 120, 120);
-                color: white;
+                background-image: linear-gradient(
+                    0deg,
+                    rgb(226, 119, 119),
+                    rgb(255, 109, 109)
+                );
+                color: var(--background);
+                box-shadow: 0 0 0 0;
             }
         }
     }
@@ -178,8 +204,10 @@ const openSuccess = (value) => {
 .right {
     padding: 20px;
     input,
-    button {
+    .btn {
         width: 100%;
+        height: 50px;
+        line-height: 50px;
         margin: 20px 0;
         border-radius: 5px;
     }
@@ -212,9 +240,15 @@ const openSuccess = (value) => {
             color: var(--black);
             border: 1px solid var(--black);
         }
-        .del{
+        .del {
             border: 1px solid red;
             color: red;
+        }
+        .del:hover {
+            background-image: linear-gradient(0deg, #fd6a6a, #ff4a4a);
+        }
+        .close:hover {
+            background-image: linear-gradient(0deg, #cdcdcd, #cacaca);
         }
     }
 }

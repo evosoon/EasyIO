@@ -1,4 +1,5 @@
 <template>
+    <!-- 右弹窗 -->
     <transition name="fromRight">
         <div class="add" v-if="addAreaFlag" @click.self="addArea(0)">
             <div class="right">
@@ -27,17 +28,20 @@
             </div>
         </div>
     </transition>
-
+    <!-- 主体 -->
     <div class="Box flex">
+        <!-- 工具栏 -->
         <div class="tools flex">
             <button class="btn" @click="getPicListFun()">刷新列表</button>
             <button class="btn" @click="addArea(1)">添加图片</button>
             <input placeholder="点击搜素图片" type="text" v-model="keyWord" />
             <button class="btn" @click="List = !List">{{ ListStatus }}</button>
         </div>
+        <!-- 列表区域 -->
         <div class="DocList flex" v-if="List">
             <template v-if="FilPicList.length">
                 <div class="center">
+                    <!-- 列表Item -->
                     <Item
                         v-for="item in FilPicList"
                         :key="item.path"
@@ -47,11 +51,13 @@
                         @getPicListFun="getPicListFun"
                     ></Item>
                 </div>
+                <!-- 图片展示 -->
                 <PicShow :checkItem="checkItem"></PicShow>
             </template>
+            <!-- 判断列表为空 -->
             <Zero v-else></Zero>
         </div>
-
+        <!-- 视图列表 -->
         <DocListPic
             v-else
             :FilPicList="FilPicList"
@@ -61,38 +67,49 @@
 </template>
 
 <script setup>
-import { ref, reactive, watchEffect, computed, onMounted } from "vue";
-import bus from "@/utils/eventBus";
-import { useCounterStore } from "@/stores/user";
-import { getPicList, addPicItem } from "@/apis/pictureApi";
 import PicShow from "@/components/Home/PicShow.vue";
-import DocListPic from "@/components/DocList_Pic.vue";
+import DocListPic from "@/components/Home/DocList_Pic.vue";
 import Zero from "@/components/zero.vue";
 import Item from "@/components/item.vue";
 
-let List = ref(true);
-let ListStatus = computed(() => (List.value ? "列表" : "视图"));
+import { ref, reactive, watchEffect, computed, onMounted } from "vue";
+import { useCounterStore } from "@/stores/user";
+import { getPicList, addPicItem } from "@/apis/pictureApi";
+import { openSuccess, openError } from "@/hooks/usePOP";
+import bus from "@/utils/eventBus";
+
 let store = useCounterStore();
+
+// 模式切换
+let List = ref(true);
+let ListStatus = computed(() => (List.value ? "列表模式" : "视图模式"));
+
+// 选中的图片
 let ChickFlag = ref("");
 let checkItem = ref("");
 function getItem(item) {
     ChickFlag.value = item.name;
     checkItem.value = item;
 }
+
+// 添加图片
 let addAreaFlag = ref(0);
 function addArea(val) {
     if (PicDocName.value) {
         addAreaFlag.value = val;
     } else {
-        openWarning("请选择分组");
+        openError("请选择分组");
     }
 }
-//
+
+// 上传涂片
 let pictureName = ref("");
+
 const upload = reactive({
     picture: null,
     picsrc: "",
 });
+
 async function upLoadFun() {
     let identily = "公共空间";
     let formdata = new FormData();
@@ -112,20 +129,7 @@ async function upLoadFun() {
         getPicListFun();
     }
 }
-// 成功弹窗
-const openSuccess = (value) => {
-    ElMessage({
-        message: value,
-        type: "success",
-    });
-};
-// 警告弹窗
-const openWarning = (value) => {
-    ElMessage({
-        message: value,
-        type: "warning",
-    });
-};
+
 // 上传图片预览
 function changePicture(event) {
     if (event.target.files[0]) {
@@ -142,10 +146,12 @@ function changePicture(event) {
 }
 
 // 获取图片列表
-let keyWord = ref("");
 let PicList = ref([]);
 let FilPicList = ref([]);
+
+let keyWord = ref("");
 let PicDocName = ref("");
+
 async function getPicListFun(value = PicDocName.value) {
     let identily = "公共空间";
     let query = `${identily}/${store.username}/${value}`;
@@ -161,7 +167,7 @@ watchEffect(() => {
     });
     FilPicList.value = fil;
 });
-// 上传图片
+
 // onMounted
 onMounted(() => {
     bus.on("ListName", (value) => {
@@ -188,9 +194,14 @@ onMounted(() => {
         input {
             flex: 4;
             margin: 2px 10px;
-            border: 0;
+            border: 1px solid transparent;
+            outline: 0;
             border-bottom: 1px solid var(--color);
             padding: 10px;
+            transition: all 1s;
+        }
+        input:focus {
+            border: 1px solid var(--color);
         }
     }
     .DocList {
@@ -216,7 +227,8 @@ onMounted(() => {
         padding: 10px;
         width: 100%;
         border: 1px solid var(--bgColor);
-        box-shadow: 0 0 5px 2px var(--bgColor) inset;
+        box-shadow: 0 0 5px 1px var(--bgColor) inset;
+        outline: 0;
     }
     .preview {
         width: 100%;

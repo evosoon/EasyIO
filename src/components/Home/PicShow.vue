@@ -19,9 +19,8 @@
 <script setup>
 import bus from "@/utils/eventBus";
 let props = defineProps(["checkItem"]);
-import useCopylink from '@/hooks/useCopylink'
+import useCopylink from "@/hooks/useCopylink";
 </script>
-
 
 <style lang="scss" scoped>
 .PicShow {
@@ -36,20 +35,22 @@ import useCopylink from '@/hooks/useCopylink'
         min-height: 30%;
         // max-height: 500px;
         // border: 1px solid var(--color);
-        box-shadow: 0 0 5px 5px var(--gray);
+        box-shadow: 0 4px 8px 0 rgba(49, 49, 49, 0.2),
+            0 6px 20px 0 rgba(67, 67, 67, 0.19);
         padding: 5px;
         overflow: auto;
         border-radius: 5px;
+        transition: all 1s;
         img {
             width: 100%;
             border-radius: 5px;
             object-fit: cover;
         }
     }
-    .picture:hover{
-        box-shadow: 0 0 5px 5px var(--bgColor);
+    .picture:hover {
+        box-shadow: 0 4px 8px 0 var(--bgColor), 0 6px 20px 0 var(--bgColor);
     }
-    span{
+    span {
         display: block;
         height: 50px;
         margin: 5px;
@@ -84,6 +85,11 @@ import useCopylink from '@/hooks/useCopylink'
         text-align: left;
         border: 0;
         margin: 5px;
+        padding: 5px;
+    }
+    .btn:hover {
+        background: 0;
+        border: 1px solid var(--bgColor);
     }
 }
 </style>

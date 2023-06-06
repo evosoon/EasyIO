@@ -1,10 +1,14 @@
 <template>
     <div class="Right flex">
-        <div class="header"></div>
+        <!-- 通知栏 [可以启用] -->
+        <!-- <div class="header"></div> -->
+
         <transition name="transition">
+            <!-- 二级路由 home homeCenter user about seeting(404) -->
             <router-view></router-view>
         </transition>
-         <!-- <router-view v-slot="{ Component }">
+
+        <!-- <router-view v-slot="{ Component }">
             <transition name="transition">
                 <component :is="Component" />
             </transition>
@@ -18,9 +22,9 @@ export default {};
 
 <style lang="scss" scoped>
 .Right {
+    flex-direction: column;
     position: relative;
     flex: 1;
-    flex-direction: column;
     .header {
         height: 50px;
         min-height: 50px;
@@ -29,6 +33,4 @@ export default {};
         opacity: 0.5;
     }
 }
-
-
 </style>
