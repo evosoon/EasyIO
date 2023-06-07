@@ -5,7 +5,7 @@
             <div class="info">用户名：{{ store.username }}</div>
         </div>
 
-        <div class="title">
+        <div class="title flex">
             文件信息<button class="btn" @click="getListFunc()">刷新</button>
         </div>
         <div class="info">文件夹数:{{ List.length }}</div>
@@ -57,7 +57,7 @@ onMounted(() => {
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.9)
         ),
-        url("@/assets/imgs/logo_blue.png") no-repeat 70% 80%/ 30% 50%;
+        url("@/assets/imgs/logo_blue.png") no-repeat 70% 80%/ 30% 30%;
 
     .title {
         font-size: 20px;
@@ -65,8 +65,8 @@ onMounted(() => {
         margin: 10px;
         padding: 10px 0;
         border-bottom: 1px solid var(--bgColor);
+        justify-content: space-between;
         .btn {
-            float: right;
             text-align: center;
             padding: 5px 5px;
             width: 100px;
@@ -78,5 +78,16 @@ onMounted(() => {
         margin: 20px;
         padding: 20px 0;
     }
+}
+@media screen and (max-width:950px) {
+    .UserCenter{
+        padding: 50px 10%;
+          background: linear-gradient(
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.9)
+        ),
+        url("@/assets/imgs/logo_blue.png") no-repeat 50% 50%/ 40% 20%;
+    }
+    
 }
 </style>

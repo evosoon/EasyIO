@@ -35,7 +35,7 @@ onMounted(() => {
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.9)
         ),
-        url("@/assets/imgs/logo_blue.png") no-repeat 50% 50%/ 60% 100%;
+        url("@/assets/imgs/logo_blue.png") no-repeat 50% 50%/ 40% 40%;
 
     .title {
         margin: 10px 20px;

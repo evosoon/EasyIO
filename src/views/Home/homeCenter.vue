@@ -4,7 +4,7 @@
             <UserList></UserList>
         </div>
         <div class="Zero"></div>
-        <DocList></DocList>
+        <DocList class="DocList"></DocList>
     </div>
 </template>
 
@@ -25,6 +25,28 @@ import DocList from "@/components/Home/DocList.vue";
         border-left: 1px solid var(--color);
         margin-left: 1px;
         opacity: 0.8;
+    }
+}
+@media screen and (max-width: 950px) {
+    .Center {
+        width: calc(100% - 10px);
+        margin: 10px 5px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .left {
+            // height: 20%;
+            height: 200px;
+            max-height: 200px;
+            padding-bottom: 2px;
+            border-bottom: 2px solid var(--gray);
+        }
+        .Zero{
+            display: none;
+        }
+        .DocList{
+            height: 80%;
+        }
     }
 }
 </style>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL:'http://www.haorui.xyz:8000',
+    baseURL:'https://www.haorui.xyz:8001',
     timeout:5000
 })
 

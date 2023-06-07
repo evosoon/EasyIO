@@ -16,7 +16,7 @@ const router = useRouter();
 // 获取用户信息
 function getUserInfo() {
     const store = useCounterStore();
-    store.setUsername('root');
+    store.setUsername("root");
 }
 onMounted(() => {
     getUserInfo();
@@ -27,5 +27,13 @@ onMounted(() => {
 .box {
     flex-direction: row;
     height: 100vh;
+}
+
+@media screen and (max-width: 950px) {
+    .box {
+        flex-direction: column;
+        height: 100vh;
+        overflow: auto;
+    }
 }
 </style>

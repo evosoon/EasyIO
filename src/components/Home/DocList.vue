@@ -198,6 +198,7 @@ onMounted(() => {
             outline: 0;
             border-bottom: 1px solid var(--color);
             padding: 10px;
+            min-width: 100px;
             transition: all 1s;
         }
         input:focus {
@@ -226,8 +227,8 @@ onMounted(() => {
         margin: 20px 0;
         padding: 10px;
         width: 100%;
+        height: 48px;
         border: 1px solid var(--bgColor);
-        box-shadow: 0 0 5px 1px var(--bgColor) inset;
         outline: 0;
     }
     .preview {
@@ -239,6 +240,64 @@ onMounted(() => {
         width: 100%;
         margin: 10px 0;
         padding: 10px;
+    }
+}
+@media screen and (max-width: 950px) {
+    .Box {
+        margin: 0;
+        width: 100%;
+        height: calc(100% - 200px);
+        .tools {
+            background-color: #fff;
+            height: 50px;
+            margin: 2px 0;
+            padding: 0 5px;
+            .btn {
+                flex: 1;
+                min-width: 40px;
+                max-width: 40px;
+                margin: 2px;
+                padding: 2px;
+            }
+        }
+        .DocList {
+            width: 100%;
+            overflow: hidden;
+            .center {
+                overflow: auto;
+                margin-bottom: 100px;
+            }
+        }
+    }
+
+    .right {
+        padding: 20px;
+        overflow: auto;
+        height: 100%;
+        background-color: var(--background);
+        position: relative;
+        z-index: 100;
+        span {
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Box {
+      
+        .DocList {
+            width: 100%;
+            overflow: hidden;
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: center;
+            .center {
+                width: 100%;
+                overflow: auto;
+                margin-bottom: 100px;
+            }
+        }
     }
 }
 </style>

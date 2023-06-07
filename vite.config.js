@@ -40,9 +40,12 @@ export default defineConfig({
     },
   },
 
+  server:{
+    host: '0.0.0.0',
+    }
   //   server: {			
   //   host: '192.168.1.8',	// 本机的局域网IP
-  //   port: '8080',  // 端口号，一般情况下为8080
+  //   port: '8000',  // 端口号，一般情况下为8080
   // }	
 
 })

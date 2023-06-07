@@ -19,8 +19,8 @@
     <teleport to="body" v-if="delAreaFlag">
         <div class="POP flex">
             <div>
-                确实删除 [ {{ delDocName }} ] ?删除后
-                此分区及其中的内容将不复存在
+                <p>确实删除 [ {{ delDocName }} ] ?删除后
+                此分区及其中的内容将不复存在</p>
                 <button class="btn del" @click="delDoc(delDocName)">
                     删除
                 </button>
@@ -166,7 +166,6 @@ onMounted(() => {
     }
     .List {
         flex: 1;
-        overflow: hidden;
         height: 100%;
         overflow: auto;
         .item {
@@ -228,28 +227,122 @@ onMounted(() => {
     align-items: center;
     background-color: rgba(235, 235, 235, 0.5);
     div {
-        border: red;
-        background-color: var(--background);
-        padding: 25px;
+        border: rgb(255, 116, 116);
+        background-color:  rgba($color: #ffe7e7, $alpha: 0.4);
+        padding: 50px 75px;
         border-radius: 5px;
-        box-shadow: 0 0 5px 1px red;
+        box-shadow: 0 0 5px 1px rgb(255, 116, 116);
+        transition: all 1s;
         button {
-            margin: 10px;
+            margin: 5%;
             background-color: #fff;
-            padding: 2px 5px;
+            width: 40%;
+            padding: 10px 20px;
             color: var(--black);
-            border: 1px solid var(--black);
+            border: 1px solid var(--gray);
         }
         .del {
-            border: 1px solid red;
-            color: red;
+            border: 1px solid rgb(255, 116, 116);
+            color: rgb(255, 116, 116);
         }
         .del:hover {
-            background-image: linear-gradient(0deg, #fd6a6a, #ff4a4a);
+            background-image: linear-gradient(0deg, #ff8f8f, #ff9f9f);
         }
         .close:hover {
             background-image: linear-gradient(0deg, #cdcdcd, #cacaca);
         }
     }
+    div:hover{
+        padding:55px 85px;
+        font-size: 20px;
+        button{
+                        padding: 15px 25px;
+        }
+    }
+}
+
+@media screen and (max-width : 950px) {
+
+    .UserList {
+    height: 100%;
+    width: 100%;
+    background-color: var(--background);
+    overflow: hidden;
+    display: block;
+    span {
+        display: inline-block;
+        height: 50px;
+        width: calc(100% - 210px);
+        line-height: 50px;
+        overflow: hidden;
+        text-align: center;
+        color: var(--background);
+        background-color: var(--color);
+        box-shadow: 0 0px 0px 0px var(--black);
+        opacity: 0.8;
+        margin-bottom: 5px;
+    }
+    .title {
+        float:right;
+        height: 50px;
+        width: 100px;
+        line-height: 50px;
+        margin: 0 2px;
+    }
+    .List {
+        overflow: hidden;
+        height: calc(100% - 50px);
+        overflow: auto;
+        .item {
+            display: flex;
+            padding: 5px;
+            height: 40px;
+            line-height: 30px;
+            margin: 0;
+            justify-content: space-between;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            .delbtn {
+                background-color: transparent;
+                height: 30px;
+                border: 0;
+                margin: 0;
+                padding: 0 5px;
+            }
+            .delbtn:hover {
+                background-image: linear-gradient(
+                    0deg,
+                    rgb(226, 119, 119),
+                    rgb(255, 109, 109)
+                );
+                color: var(--background);
+                box-shadow: 0 0 0 0;
+            }
+        }
+    }
+}
+.chickClass {
+    background-color: var(--bgColor);
+}
+.right {
+    position: relative;
+    z-index: 100;
+    padding: 20px;
+    background-color: var(--background);
+    height: 100%;
+}
+.POP{
+    div{
+          background-color:  rgba($color: #ffe7e7, $alpha: 0.9);
+          button{
+            width: 100px;
+          }
+          button:hover{
+            width: 100px;
+          }
+    }
+
+}
 }
 </style>

@@ -33,4 +33,10 @@ export default {};
         opacity: 0.5;
     }
 }
+@media screen and (max-width : 950px) {
+    .Right{
+        margin-top: 55px;
+    }
+    
+}
 </style>

@@ -100,3 +100,17 @@ a{
       background-color: var(--background);
   }
 }
+
+@media screen and (max-width : 950px) {
+.add {
+  .right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-shadow: 0 0 5px 2px rgb(182, 182, 182);
+      background-color: var(--background);
+  }
+}
+}

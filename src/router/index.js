@@ -38,6 +38,11 @@ const router = createRouter({
           meta:{keepalive:false},
           component:()=>import("@/views/Home/about.vue")
         },
+        {path:'setting',
+        name:'setting',
+        meta:{keepalive:false},
+        component:()=>import("@/views/Home/setting.vue")
+      },
       ]
     },
     {
