@@ -52,7 +52,7 @@
                     ></Item>
                 </div>
                 <!-- 图片展示 -->
-                <PicShow :checkItem="checkItem"></PicShow>
+                <PicShow :checkItem="checkItem" @getPicListFun="getPicListFun"></PicShow>
             </template>
             <!-- 判断列表为空 -->
             <Zero v-else></Zero>
@@ -174,7 +174,14 @@ onMounted(() => {
         PicDocName.value = value;
         getPicListFun(value);
     });
+    bus.on('updataList',()=>{
+        getPicListFun()
+    })
 });
+// onbeforeUnmount(()=>{
+//     bus.off('ListName')
+//     bus.off('updataList')
+// })
 </script>
 
 <style lang="scss" scoped>

@@ -26,7 +26,7 @@ let flag = ref(true);
 
 async function deleteItem(path) {
     
-    let pathD = path.slice(33);
+    let pathD = path.slice(34);
     try {
         let data = await delPicItem(pathD);
         openSuccess(data.message)

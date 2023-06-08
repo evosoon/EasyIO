@@ -30,15 +30,17 @@ import { ref } from "vue";
 import useCopylink from "@/hooks/useCopylink";
 import { openSuccess, openError } from "@/hooks/usePOP";
 import { delPicItem } from "@/apis/pictureApi";
+import bus from "@/utils/eventBus";
 
 let props = defineProps(["item"]);
 let delFlag = ref(false);
 async function deleteItem(path) {
-    let pathD = path.slice(33);
+    let pathD = path.slice(34);
+    console.log(pathD)
     try {
         let data = await delPicItem(pathD);
         openSuccess(data.message);
-        emit("getPicListFun");
+        bus.emit('updataList')
     } catch (e) {
         openError(e);
     }

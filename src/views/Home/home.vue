@@ -2,8 +2,22 @@
     <div class="Home">
         <div class="title">{{ sayTime }} {{ store.username }}</div>
         <div class="center flex">
-            <div class="btn flex" @click="jump('/main/center')">进入空间</div>
-            <div class="btn flex" @click="jump('/main/about')">关于</div>
+            <div>
+                <div class="btn flex" @click="jump('/main/center')">
+                    <img src="@/assets/icon/图片.png">
+                </div>
+                <div class="btn flex" @click="jump('/main/two')">
+                <img src="@/assets/icon/视频.png">
+                </div>
+            </div>
+            <div>
+                <div class="btn flex" @click="jump('/main/three')">
+                <img src="@/assets/icon/文件.png">
+                </div>
+                <div class="btn flex" @click="jump('/main/user')">
+                <img src="@/assets/icon/统计.png">
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -49,34 +63,85 @@ onMounted(() => {
     .center {
         height: calc(100% - 150px);
         padding: 50px 20px;
-        flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
-        .btn {
-            width: 250px;
-            height: 50px;
-            font-size: 40px;
-            justify-content: center;
-            align-items: center;
-            transition: all 1s;
-            border: 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-left: 4px solid var(--color);
-            border-right: 4px solid var(--color);
-        }
-        .btn:hover {
-            height: 100px;
+        div {
+            display: flex;
+            height: 100%;
             width: 100%;
-            opacity: 0.6;
-            border-left: 2px solid var(--color);
-            border-right: 2px solid var(--color);
-            border: 2px solid rgba(151, 189, 255, 0.5);
+            flex-direction: row;
+            justify-content: space-evenly;
+            .btn {
+                justify-content: center;
+                align-items: center;
+                transition: all 1s;
+                border: 1px solid var(--gray);
+                padding: 40px;
+                background-color: rgba(255, 255, 255, 0.1);
+                img{
+                    width: 40%;
+                }
+            }
+            .btn:hover {
+                opacity: 0.6;
+                border-left: 2px solid var(--color);
+                border-right: 2px solid var(--color);
+                border: 2px solid rgba(151, 189, 255, 0.5);
+                box-shadow: 0 0 8px 4px var(--gray);
+                font-size: 30px;
 
-             background: linear-gradient(
-                rgba(151, 167, 255, 0.5),
-                rgba(135, 189, 255, 0.5)
-            );
+                background: linear-gradient(
+                    rgba(151, 167, 255, 0.2),
+                    rgba(135, 189, 255, 0.2)
+                );
+            }
         }
     }
+}
+@media screen and (max-width:950px) {
+    .Home {
+    .center {
+        height: calc(100% - 150px);
+        padding: 50px 20px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        div {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            .btn {
+                height: 80px;
+                width: 120px;
+                justify-content: center;
+                align-items: center;
+                transition: all 1s;
+                padding: 0;
+                margin: 10px 0;
+                background-color: rgba(255, 255, 255, 0.1);
+                border: 0;
+                border-bottom: 1px solid var(--gray);
+                img{
+                    height: 80px;
+                    width: 80px;
+                }
+            }
+            .btn:hover {
+                opacity: 0.6;
+                border-left: 2px solid var(--color);
+                border-right: 2px solid var(--color);
+                border: 2px solid rgba(151, 189, 255, 0.5);
+                box-shadow: 0 0 8px 4px var(--gray);
+                background: linear-gradient(
+                    rgba(151, 167, 255, 0.2),
+                    rgba(135, 189, 255, 0.2)
+                );
+            }
+        }
+    }
+}
 }
 </style>

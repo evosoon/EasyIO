@@ -3,7 +3,7 @@
         <template v-if="props.FilPicList.length">
             <div class="center flex">
                 <div  class="li" v-for="List in Lists">
-                      <ShowItem  v-for="item in List" :item='item' :key="item.name"></ShowItem>
+                      <ShowItem v-for="item in List" :item='item' :key="item.name"></ShowItem>
                 </div>
             </div>
         </template>
