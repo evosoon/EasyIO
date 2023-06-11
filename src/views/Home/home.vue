@@ -3,19 +3,19 @@
         <div class="title">{{ sayTime }} {{ store.username }}</div>
         <div class="center flex">
             <div>
-                <div class="btn flex" @click="jump('/main/center')">
+                <div class="pic btn flex" @click="jump('/main/center')">
                     <img src="@/assets/icon/图片.png">
                 </div>
-                <div class="btn flex" @click="jump('/main/two')">
+                <div class="vid btn flex" @click="jump('/main/two')">
                 <img src="@/assets/icon/视频.png">
                 </div>
             </div>
             <div>
-                <div class="btn flex" @click="jump('/main/three')">
+                <div class="fil btn flex" @click="jump('/main/three')">
                 <img src="@/assets/icon/文件.png">
                 </div>
-                <div class="btn flex" @click="jump('/main/user')">
-                <img src="@/assets/icon/统计.png">
+                <div class="num btn flex" @click="jump('/main/user')">
+                <img class="img" src="@/assets/icon/统计.png">
                 </div>
             </div>
         </div>
@@ -74,13 +74,19 @@ onMounted(() => {
             .btn {
                 justify-content: center;
                 align-items: center;
-                transition: all 1s;
-                border: 1px solid var(--gray);
+                transition:  0.8s;
+                // border: 1px solid var(--gray);
+                border: 0;
                 padding: 40px;
                 background-color: rgba(255, 255, 255, 0.1);
                 img{
+                    width: 30%;
+                    transition: 0.8s;
+                }
+                .img{
                     width: 40%;
                 }
+
             }
             .btn:hover {
                 opacity: 0.6;
@@ -94,6 +100,23 @@ onMounted(() => {
                     rgba(151, 167, 255, 0.2),
                     rgba(135, 189, 255, 0.2)
                 );
+            }
+            .pic:hover,.vid:hover,.fil:hover,.num:hover{
+                img{
+                    display: none;
+                }
+            }
+            .pic:hover::after{
+                content: '图片';
+            }
+            .vid:hover::after{
+                content: '视频';
+            }
+            .fil:hover::after{
+                content: '文件';
+            }
+            .num:hover::after{
+                content: '统计';
             }
         }
     }
@@ -124,7 +147,7 @@ onMounted(() => {
                 background-color: rgba(255, 255, 255, 0.1);
                 border: 0;
                 border-bottom: 1px solid var(--gray);
-                img{
+                img,.img{
                     height: 80px;
                     width: 80px;
                 }

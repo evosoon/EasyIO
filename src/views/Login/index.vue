@@ -21,7 +21,7 @@
                         name=""
                         v-model.trim="password"
                     />
-                    <button class="btn" @click="login" :disabled="canSub">
+                    <button class="btn" @click="loginT" :disabled="canSub">
                         登录
                     </button>
                 <!-- 注册 -->
@@ -52,6 +52,10 @@ function clear() {
     password.value = "";
 }
 
+function loginT(){
+    if(username.value == 'root' && password.value == '1234')login()
+    else openError('用户名或密码错误')
+}
 // 登录
 async function login() {
         loading.value = false;

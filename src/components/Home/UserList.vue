@@ -19,8 +19,10 @@
     <teleport to="body" v-if="delAreaFlag">
         <div class="POP flex">
             <div>
-                <p>确实删除 [ {{ delDocName }} ] ?删除后
-                此分区及其中的内容将不复存在</p>
+                <p>
+                    确实删除 [ {{ delDocName }} ] ?删除后
+                    此分区及其中的内容将不复存在
+                </p>
                 <button class="btn del" @click="delDoc(delDocName)">
                     删除
                 </button>
@@ -64,7 +66,6 @@ let List = ref([]);
 
 // 添加文件夹
 let addAreaFlag = ref(false);
-
 let newDocName = ref("");
 
 function addArea(val) {
@@ -73,7 +74,6 @@ function addArea(val) {
 
 // 删除文件夹
 let delAreaFlag = ref(false);
-
 let delDocName = ref("");
 
 function delArea(val) {
@@ -98,7 +98,6 @@ async function addDoc() {
     try {
         const data = await addList(value);
         openSuccess(data.message);
-
         getListFunc();
     } catch (e) {
         console.log(e);
@@ -228,7 +227,7 @@ onMounted(() => {
     background-color: rgba(235, 235, 235, 0.5);
     div {
         border: rgb(255, 116, 116);
-        background-color:  rgba($color: #ffe7e7, $alpha: 0.4);
+        background-color: rgba($color: #ffe7e7, $alpha: 0.4);
         padding: 50px 75px;
         border-radius: 5px;
         box-shadow: 0 0 5px 1px rgb(255, 116, 116);
@@ -252,97 +251,96 @@ onMounted(() => {
             background-image: linear-gradient(0deg, #cdcdcd, #cacaca);
         }
     }
-    div:hover{
-        padding:55px 85px;
+    div:hover {
+        padding: 55px 85px;
         font-size: 20px;
-        button{
-                        padding: 15px 25px;
+        button {
+            padding: 15px 25px;
         }
     }
 }
 
-@media screen and (max-width : 950px) {
-
+@media screen and (max-width: 950px) {
     .UserList {
-    height: 100%;
-    width: 100%;
-    background-color: var(--background);
-    overflow: hidden;
-    display: block;
-    span {
-        display: inline-block;
-        height: 50px;
-        width: calc(100% - 210px);
-        line-height: 50px;
+        height: 100%;
+        width: 100%;
+        background-color: var(--background);
         overflow: hidden;
-        text-align: center;
-        color: var(--background);
-        background-color: var(--color);
-        box-shadow: 0 0px 0px 0px var(--black);
-        opacity: 0.8;
-        margin-bottom: 5px;
-    }
-    .title {
-        float:right;
-        height: 50px;
-        width: 100px;
-        line-height: 50px;
-        margin: 0 2px;
-    }
-    .List {
-        overflow: hidden;
-        height: calc(100% - 50px);
-        overflow: auto;
-        .item {
-            display: flex;
-            padding: 5px;
-            height: 40px;
-            line-height: 30px;
-            margin: 0;
-            justify-content: space-between;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+        display: block;
+        span {
+            display: inline-block;
+            height: 48px;
+            width: calc(100% - 220px);
+            line-height: 48px;
             overflow: hidden;
-            .delbtn {
-                background-color: transparent;
-                height: 30px;
-                border: 0;
+            text-align: center;
+            color: var(--color);
+            background-color: var(--background);
+            box-shadow: 0px 0px 4px 2px var(--gray);
+            opacity: 0.8;
+            margin-bottom: 5px;
+            margin: 2px;
+        }
+        .title {
+            float: right;
+            height: 50px;
+            width: 100px;
+            line-height: 50px;
+            margin: 0 2px;
+        }
+        .List {
+            overflow: hidden;
+            height: calc(100% - 50px);
+            overflow: auto;
+            .item {
+                display: flex;
+                padding: 5px;
+                height: 40px;
+                line-height: 30px;
                 margin: 0;
-                padding: 0 5px;
-            }
-            .delbtn:hover {
-                background-image: linear-gradient(
-                    0deg,
-                    rgb(226, 119, 119),
-                    rgb(255, 109, 109)
-                );
-                color: var(--background);
-                box-shadow: 0 0 0 0;
+                justify-content: space-between;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                .delbtn {
+                    background-color: transparent;
+                    height: 30px;
+                    border: 0;
+                    margin: 0;
+                    padding: 0 5px;
+                }
+                .delbtn:hover {
+                    background-image: linear-gradient(
+                        0deg,
+                        rgb(226, 119, 119),
+                        rgb(255, 109, 109)
+                    );
+                    color: var(--background);
+                    box-shadow: 0 0 0 0;
+                }
             }
         }
     }
-}
-.chickClass {
-    background-color: var(--bgColor);
-}
-.right {
-    position: relative;
-    z-index: 100;
-    padding: 20px;
-    background-color: var(--background);
-    height: 100%;
-}
-.POP{
-    div{
-          background-color:  rgba($color: #ffe7e7, $alpha: 0.9);
-          button{
-            width: 100px;
-          }
-          button:hover{
-            width: 100px;
-          }
+    .chickClass {
+        background-color: var(--bgColor);
     }
-
-}
+    .right {
+        position: relative;
+        z-index: 100;
+        padding: 20px;
+        background-color: var(--background);
+        height: 100%;
+    }
+    .POP {
+        div {
+            background-color: rgba($color: #ffe7e7, $alpha: 0.9);
+            button {
+                width: 100px;
+            }
+            button:hover {
+                width: 100px;
+            }
+        }
+    }
 }
 </style>

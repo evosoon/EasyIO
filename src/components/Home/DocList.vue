@@ -34,6 +34,7 @@
         <div class="tools flex">
             <button class="btn" @click="getPicListFun()">刷新列表</button>
             <button class="btn" @click="addArea(1)">添加图片</button>
+            <div class="listLength">{{FilPicList.length}}/{{PicList.length}}</div>
             <input placeholder="点击搜素图片" type="text" v-model="keyWord" />
             <button class="btn" @click="List = !List">{{ ListStatus }}</button>
         </div>
@@ -194,12 +195,19 @@ onMounted(() => {
         min-height: 50px;
         margin-bottom: 4px;
         justify-content: start;
-        button {
+        .listLength{
             flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color);
+        }
+        button {
+            flex: 2;
             margin: 2px 10px;
         }
         input {
-            flex: 4;
+            flex: 8;
             margin: 2px 10px;
             border: 1px solid transparent;
             outline: 0;

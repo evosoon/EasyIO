@@ -36,11 +36,11 @@ let props = defineProps(["item"]);
 let delFlag = ref(false);
 async function deleteItem(path) {
     let pathD = path.slice(34);
-    console.log(pathD)
+    console.log(pathD);
     try {
         let data = await delPicItem(pathD);
         openSuccess(data.message);
-        bus.emit('updataList')
+        bus.emit("updataList");
     } catch (e) {
         openError(e);
     }
@@ -102,7 +102,8 @@ async function deleteItem(path) {
         transition: all 0.8s;
         img {
             width: 100%;
-            height: 200px;
+            aspect-ratio: 4/3;
+
             object-fit: cover;
         }
     }
@@ -129,7 +130,8 @@ async function deleteItem(path) {
             transition: all 0.8s;
             img {
                 width: 100%;
-                height: 100px;
+                aspect-ratio: 4/3;
+
                 object-fit: cover;
             }
         }

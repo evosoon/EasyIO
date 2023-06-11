@@ -58,13 +58,25 @@ async function deleteItem(path) {
         color: var(--color);
     }
     .btn {
-        border: 1px solid var(--color);
-        border-radius: 10px;
+        border: 1px solid transparent;
         height: 20px;
         text-align: center;
         padding: 0 10px;
         min-width: 50px;
         margin: 0 5px;
+    }
+    .btn:hover{
+        border: 1px solid var(--color);
+
+    }
+}
+@media screen and (max-width:960px) {
+    .item{
+        .btn{
+            margin: 0;
+            padding: 0;
+            text-align: right;
+        }
     }
 }
 </style>
