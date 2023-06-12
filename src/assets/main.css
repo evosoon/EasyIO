@@ -114,3 +114,16 @@ a{
   }
 }
 }
+
+::-webkit-scrollbar{
+  width: 6px;
+}
+::-webkit-scrollbar-track{
+  background-color: var(--background);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--bgColor);
+  border-radius: 3px;
+
+}
