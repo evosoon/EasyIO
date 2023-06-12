@@ -29,7 +29,6 @@ import useCopylink from "@/hooks/useCopylink";
     flex: 1;
     background-color: #fff;
     border-left: 5px solid var(--gray);
-    margin-left: 4px;
     overflow: auto;
     padding: 10px;
     .picture {
@@ -98,7 +97,7 @@ import useCopylink from "@/hooks/useCopylink";
 }
 @media screen and (max-width: 600px) {
     .PicShow {
-        padding: 5px;
+        padding: 4px 0;
         margin: 0;
         border: 0;
         border-bottom: 1px solid var(--gray);
@@ -125,11 +124,11 @@ import useCopylink from "@/hooks/useCopylink";
             flex: 1;
             min-width: 100px;
             height: 180px;
-            padding: 8px;
+            padding: 0 4px;
             overflow: auto;
             span {
-                height: 35px;
-                line-height: 35px;
+                height: 32px;
+                line-height: 30px;
                 margin: 0;
                 padding: 0;
             }

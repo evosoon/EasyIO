@@ -27,6 +27,7 @@ onMounted(() => {
 .box {
     flex-direction: row;
     height: 100vh;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 950px) {

@@ -25,6 +25,7 @@ export default {};
     flex-direction: column;
     position: relative;
     flex: 1;
+    overflow: hidden;
     .header {
         height: 50px;
         min-height: 50px;

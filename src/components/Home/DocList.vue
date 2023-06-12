@@ -280,7 +280,7 @@ onMounted(() => {
             overflow: hidden;
             .center {
                 overflow: auto;
-                margin-bottom: 100px;
+                padding-bottom: 100px;
             }
         }
     }
@@ -310,7 +310,6 @@ onMounted(() => {
             .center {
                 width: 100%;
                 overflow: auto;
-                margin-bottom: 100px;
             }
         }
     }

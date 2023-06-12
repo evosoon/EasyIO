@@ -37,16 +37,17 @@ function back() {
     margin: 20px;
     flex: 1;
     flex-direction: row;
-    // overflow: hidden;
-
+overflow: auto;
     .btn {
         width: 100%;
         height: 40px;
         margin-bottom: 10px;
     }
     .center {
+    overflow: auto;
         flex-direction: column;
         align-items: center;
+
         background: linear-gradient(
                 rgba(255, 255, 255, 0.9),
                 rgba(255, 255, 255, 0.9)
@@ -70,7 +71,6 @@ function back() {
         }
         p {
             margin: 5px;
-            min-height: 40px;
             transition: all 1s;
         }
         p:hover {
@@ -80,13 +80,14 @@ function back() {
 }
 @media screen and (max-width: 950px) {
     .About {
+       
         .center {
             background: linear-gradient(
                     rgba(255, 255, 255, 0.9),
                     rgba(255, 255, 255, 0.9)
                 ),
                 url("@/assets/imgs/logo_blue.png") no-repeat 50% 50%/ 40% 20%;
-            padding: 20px 10%;
+            padding: 20px 10% 100px 10%;
         }
     }
 }
