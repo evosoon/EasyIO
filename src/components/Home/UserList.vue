@@ -211,6 +211,7 @@ onMounted(() => {
     }
     input {
         height: 60px;
+        outline: 0;
         padding: 10px;
         border: 2px solid var(--bgColor);
     }

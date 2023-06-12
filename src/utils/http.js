@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import {openError} from '@/hooks/usePOP'
 const axiosInstance = axios.create({
     baseURL:'https://www.haorui.xyz:8001',
     timeout:5000
@@ -16,6 +16,13 @@ axiosInstance.interceptors.request.use(config=>{
 
 // 响应拦截器
 axiosInstance.interceptors.response.use(res=>res.data, e=>{
+    if(e.message.indexOf(401) != -1){
+        localStorage.removeItem('token')
+        openError('身份认证过期')
+        setTimeout(() => {
+            window.location.reload()
+        }, 800);
+    }
     return Promise.reject(e)
 })
 

@@ -4,18 +4,18 @@
         <div class="center flex">
             <div>
                 <div class="pic btn flex" @click="jump('/main/center')">
-                    <img src="@/assets/icon/图片.png">
+                    <img src="@/assets/icon/图片.png" />
                 </div>
                 <div class="vid btn flex" @click="jump('/main/two')">
-                <img src="@/assets/icon/视频.png">
+                    <img src="@/assets/icon/视频.png" />
                 </div>
             </div>
             <div>
                 <div class="fil btn flex" @click="jump('/main/three')">
-                <img src="@/assets/icon/文件.png">
+                    <img src="@/assets/icon/文件.png" />
                 </div>
                 <div class="num btn flex" @click="jump('/main/user')">
-                <img class="img" src="@/assets/icon/统计.png">
+                    <img class="img" src="@/assets/icon/统计.png" />
                 </div>
             </div>
         </div>
@@ -74,19 +74,18 @@ onMounted(() => {
             .btn {
                 justify-content: center;
                 align-items: center;
-                transition:  0.8s;
+                transition: 0.8s;
                 // border: 1px solid var(--gray);
                 border: 0;
                 padding: 40px;
                 background-color: rgba(255, 255, 255, 0.1);
-                img{
+                img {
                     width: 30%;
                     transition: 0.8s;
                 }
-                .img{
+                .img {
                     width: 40%;
                 }
-
             }
             .btn:hover {
                 opacity: 0.6;
@@ -101,70 +100,98 @@ onMounted(() => {
                     rgba(135, 189, 255, 0.2)
                 );
             }
-            .pic:hover,.vid:hover,.fil:hover,.num:hover{
-                img{
-                    display: none;
+            .pic:hover,
+            .vid:hover,
+            .fil:hover,
+            .num:hover {
+                img {
+                    // display: none;
+                    width: 0;
+                    // height: 0;
                 }
             }
-            .pic:hover::after{
-                content: '图片';
+            .pic:hover::before {
+                content: "图";
             }
-            .vid:hover::after{
-                content: '视频';
+            .pic:hover::after {
+                content: "片";
             }
-            .fil:hover::after{
-                content: '文件';
+            .vid:hover::before {
+                content: "视";
             }
-            .num:hover::after{
-                content: '统计';
+            .vid:hover::after {
+                content: "频";
+            }
+            .fil:hover::before {
+                content: "文";
+            }
+            .fil:hover::after {
+                content: "件";
+            }
+            .num:hover::before {
+                content: "统";
+            }
+            .num:hover::after {
+                content: "计";
             }
         }
     }
 }
-@media screen and (max-width:950px) {
+@media screen and (max-width: 950px) {
     .Home {
-    .center {
-        height: calc(100% - 150px);
-        padding: 50px 20px;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        div {
-            display: flex;
-            flex: 1;
-            width: 100%;
-            flex-direction: column;
+        .center {
+            height: calc(100% - 150px);
+            padding: 50px 20px;
+            justify-content: center;
             align-items: center;
-            justify-content: space-evenly;
-            .btn {
-                height: 80px;
-                width: 120px;
-                justify-content: center;
+            flex-direction: column;
+            div {
+                display: flex;
+                flex: 1;
+                width: 100%;
+                flex-direction: column;
                 align-items: center;
-                transition: all 1s;
-                padding: 0;
-                margin: 10px 0;
-                background-color: rgba(255, 255, 255, 0.1);
-                border: 0;
-                border-bottom: 1px solid var(--gray);
-                img,.img{
+                justify-content: space-evenly;
+                .btn {
                     height: 80px;
-                    width: 80px;
+                    width: 120px;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all 1s;
+                    padding: 0;
+                    margin: 10px 0;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border: 0;
+                    border-bottom: 1px solid var(--gray);
+                    img,
+                    .img {
+                        height: 80px;
+                        width: 80px;
+                    }
+                }
+                .btn:hover {
+                    opacity: 0.6;
+                    border-left: 2px solid var(--color);
+                    border-right: 2px solid var(--color);
+                    border: 2px solid rgba(151, 189, 255, 0.5);
+                    box-shadow: 0 0 8px 4px var(--gray);
+                    background: linear-gradient(
+                        rgba(151, 167, 255, 0.2),
+                        rgba(135, 189, 255, 0.2)
+                    );
+                }
+                  .pic:hover,
+            .vid:hover,
+            .fil:hover,
+            .num:hover {
+                img {
+                    // display: none;
+                    // width: 0;
+                    height: 0;
                 }
             }
-            .btn:hover {
-                opacity: 0.6;
-                border-left: 2px solid var(--color);
-                border-right: 2px solid var(--color);
-                border: 2px solid rgba(151, 189, 255, 0.5);
-                box-shadow: 0 0 8px 4px var(--gray);
-                background: linear-gradient(
-                    rgba(151, 167, 255, 0.2),
-                    rgba(135, 189, 255, 0.2)
-                );
             }
         }
     }
-}
 }
 </style>

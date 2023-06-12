@@ -1,6 +1,8 @@
 <template>
     <div class="item flex">
-        <button class="btn" @mouseover="$emit('getItem', item)">快速查看</button>
+        <button class="btn" @mouseover="$emit('getItem', item)">
+            快速查看
+        </button>
         <a
             @click.stop="$emit('getItem', item)"
             :class="{ chickClass: item.name == props.ChickFlag }"
@@ -8,34 +10,34 @@
         >
         <button class="btn" v-if="flag" @click="flag = !flag">删除</button>
         <template v-else>
-            <button class="btn" @click="deleteItem(props.item.path)">确定</button>
+            <button class="btn del" @click="deleteItem(props.item.path)">
+                确定
+            </button>
             <button class="btn" @click="flag = !flag">取消</button>
         </template>
     </div>
 </template>
 
 <script setup>
-import { ref,defineEmits } from "vue";
+import { ref, defineEmits } from "vue";
 import { delPicItem } from "@/apis/pictureApi";
-import {openSuccess , openError} from '@/hooks/usePOP'
+import { openSuccess, openError } from "@/hooks/usePOP";
 
-const props = defineProps(["item","ChickFlag"]);
-const emit = defineEmits(['getPicListFun'])
+const props = defineProps(["item", "ChickFlag"]);
+const emit = defineEmits(["getPicListFun"]);
 // 删除标识
 let flag = ref(true);
 
 async function deleteItem(path) {
-    
     let pathD = path.slice(34);
     try {
         let data = await delPicItem(pathD);
-        openSuccess(data.message)
-        emit('getPicListFun')
+        openSuccess(data.message);
+        emit("getPicListFun");
     } catch (e) {
-        openError(e)
+        openError(e);
     }
 }
-
 </script>
   
 <style lang="scss" scoped>
@@ -65,14 +67,24 @@ async function deleteItem(path) {
         min-width: 50px;
         margin: 0 5px;
     }
-    .btn:hover{
+    .btn:hover {
         border: 1px solid var(--color);
-
+    }
+    .del{
+        color: rgb(255, 57, 57);
+    }
+    .del:hover {
+        border: 1px solid rgb(255, 57, 57);
+        background-image: linear-gradient(
+            30deg,
+            rgb(255, 181, 181),
+            rgb(240, 154, 154)
+        );
     }
 }
-@media screen and (max-width:960px) {
-    .item{
-        .btn{
+@media screen and (max-width: 960px) {
+    .item {
+        .btn {
             margin: 0;
             padding: 0;
             text-align: right;
