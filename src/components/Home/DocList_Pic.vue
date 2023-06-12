@@ -84,7 +84,7 @@ const emit = defineEmits(["getPicListFun"]);
             margin-bottom: 70px;
             .li {
                 margin: 1px;
-                width: calc(25% - 2px);
+                width: 50px;
               
             }
         }

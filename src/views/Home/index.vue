@@ -30,7 +30,8 @@ onMounted(() => {
     overflow: hidden;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 600px) {
+
     .box {
         flex-direction: column;
         height: 100vh;

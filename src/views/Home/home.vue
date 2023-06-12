@@ -137,14 +137,15 @@ onMounted(() => {
         }
     }
 }
+
 @media screen and (max-width: 950px) {
+
     .Home {
         .center {
             height: calc(100% - 150px);
             padding: 50px 20px;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             div {
                 display: flex;
                 flex: 1;
@@ -191,6 +192,13 @@ onMounted(() => {
                 }
             }
             }
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .Home{
+        .center{
+            flex-direction: column;
         }
     }
 }

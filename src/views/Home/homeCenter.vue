@@ -27,7 +27,8 @@ import DocList from "@/components/Home/DocList.vue";
         opacity: 0.8;
     }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 600px) {
+
     .Center {
         width: calc(100% - 10px);
         margin: 10px 5px;

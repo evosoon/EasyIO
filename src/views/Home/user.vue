@@ -79,7 +79,8 @@ onMounted(() => {
         padding: 20px 0;
     }
 }
-@media screen and (max-width:950px) {
+@media screen and (max-width: 600px) {
+
     .UserCenter{
         padding: 50px 10%;
           background: linear-gradient(

@@ -261,7 +261,8 @@ onMounted(() => {
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 600px) {
+
     .UserList {
         height: 100%;
         width: 100%;

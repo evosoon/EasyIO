@@ -82,7 +82,8 @@ async function deleteItem(path) {
         );
     }
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 600px) {
+
     .item {
         .btn {
             margin: 0;

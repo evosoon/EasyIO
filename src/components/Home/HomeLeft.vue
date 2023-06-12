@@ -127,7 +127,7 @@ function outLogin() {
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 600px) {
     .Left {
         position: fixed;
         z-index: 10;

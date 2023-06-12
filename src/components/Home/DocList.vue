@@ -261,7 +261,7 @@ onMounted(() => {
     .Box {
         margin: 0;
         width: 100%;
-        height: calc(100% - 200px);
+        // height: calc(100% - 200px);
         .tools {
             background-color: #fff;
             height: 50px;
@@ -274,11 +274,15 @@ onMounted(() => {
                 margin: 2px;
                 padding: 2px;
             }
+            input{
+                width: 80px;
+            }
         }
         .DocList {
             width: 100%;
             overflow: hidden;
             .center {
+                width: 80px;
                 overflow: auto;
                 padding-bottom: 100px;
             }
