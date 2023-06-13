@@ -130,6 +130,7 @@ function outLogin() {
 @media screen and (max-width: 600px) {
     .Left {
         position: fixed;
+        border: 0;
         z-index: 10;
         flex-direction: row;
         justify-content: space-between;

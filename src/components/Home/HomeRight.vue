@@ -2,14 +2,15 @@
     <div class="Right flex">
         <!-- 通知栏 [可以启用] -->
         <!-- <div class="header"></div> -->
+        
+            <!-- 二级路由 home homeCenter user about seeting(404) -->
 
         <transition name="transition">
-            <!-- 二级路由 home homeCenter user about seeting(404) -->
             <router-view></router-view>
         </transition>
 
         <!-- <router-view v-slot="{ Component }">
-            <transition name="transition">
+            <transition name="transitionR">
                 <component :is="Component" />
             </transition>
         </router-view> -->

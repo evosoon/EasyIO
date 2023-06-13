@@ -1,5 +1,5 @@
 <template>
-    <div class="Home">
+    <div class="Home flex">
         <div class="title">{{ sayTime }} {{ store.username }}</div>
         <div class="center flex">
             <div>
@@ -19,7 +19,12 @@
                 </div>
             </div>
         </div>
+        <!-- 备案号 -->
+          <div class="bottom">
+            <a href="https://beian.miit.gov.cn">津ICP备2022007072号-1</a>
+        </div>
     </div>
+  
 </template>
 
 <script setup>
@@ -42,6 +47,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .Home {
     flex: 1;
+    flex-direction: column;
     margin: 20px;
     padding: 20px;
     background-color: #fff;
@@ -61,6 +67,7 @@ onMounted(() => {
         border-bottom: 1px solid var(--color);
     }
     .center {
+        flex: 1;
         height: calc(100% - 150px);
         padding: 50px 20px;
         justify-content: center;
@@ -136,6 +143,18 @@ onMounted(() => {
             }
         }
     }
+    .bottom{
+        height: 20px;
+        text-align: center;
+        a{
+        text-decoration: underline;
+        }
+    }
+    .bottom:hover{
+        a{
+            color:var(--color);
+        }
+    }
 }
 
 @media screen and (max-width: 950px) {
@@ -163,7 +182,6 @@ onMounted(() => {
                     margin: 10px 0;
                     background-color: rgba(255, 255, 255, 0.1);
                     border: 0;
-                    border-bottom: 1px solid var(--gray);
                     img,
                     .img {
                         height: 80px;
@@ -199,7 +217,14 @@ onMounted(() => {
     .Home{
         .center{
             flex-direction: column;
+          div{
+              .btn{
+                border-bottom:1px solid var(--gray) ;
+                overflow: hidden;
+            }
+          }
         }
+        margin-bottom: 100px;
     }
 }
 </style>

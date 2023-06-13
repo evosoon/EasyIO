@@ -6,24 +6,24 @@
             </div>
             <div class="Right">
                 <div class="title flex">
-                      <div>登录</div>
+                    <div>登录</div>
                 </div>
                 <!-- 登录 -->
-                    <input
-                        type="text"
-                        placeholder="请输入用户名"
-                        name=""
-                        v-model.trim="username"
-                    />
-                    <input
-                        type="password"
-                        placeholder="请输入密码"
-                        name=""
-                        v-model.trim="password"
-                    />
-                    <button class="btn" @click="loginT" :disabled="canSub">
-                        登录
-                    </button>
+                <input
+                    type="text"
+                    placeholder="请输入用户名"
+                    name=""
+                    v-model.trim="username"
+                />
+                <input
+                    type="password"
+                    placeholder="请输入密码"
+                    name=""
+                    v-model.trim="password"
+                />
+                <button class="btn" @click="loginT" :disabled="canSub">
+                    登录
+                </button>
                 <!-- 注册 -->
                 <Loading v-if="!loading"></Loading>
             </div>
@@ -35,8 +35,8 @@
 import { ref, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { Login, Sign } from "@/apis/userApi";
-import Loading from '@/components/loading.vue'
-import {openSuccess , openError} from '@/hooks/usePOP'
+import Loading from "@/components/loading.vue";
+import { openSuccess, openError } from "@/hooks/usePOP";
 
 let username = ref("");
 let password = ref("");
@@ -52,13 +52,13 @@ function clear() {
     password.value = "";
 }
 
-function loginT(){
-    if(username.value == 'root' && password.value == '1234')login()
-    else openError('用户名或密码错误')
+function loginT() {
+    if (username.value == "root" && password.value == "1234") login();
+    else openError("用户名或密码错误");
 }
 // 登录
 async function login() {
-        loading.value = false;
+    loading.value = false;
     let postData = { username: username.value, password: password.value };
     try {
         const data = await Login(postData);
@@ -78,8 +78,6 @@ async function login() {
         openError("登陆失败");
     }
 }
-
-
 </script>
 
 <style lang="scss" scopeds>
@@ -116,18 +114,18 @@ async function login() {
         justify-content: center;
         align-items: center;
         width: 100%;
-        .title{
+        .title {
             width: 100%;
             padding: 20px;
             justify-content: space-between;
-            div{
+            div {
                 font-size: 20px;
             }
-            span{
+            span {
                 font-size: 14px;
-                color:var(--black);
-            cursor:pointer; 
-        }
+                color: var(--black);
+                cursor: pointer;
+            }
         }
         .btn {
             color: var(--black);
@@ -136,6 +134,7 @@ async function login() {
         }
         input,
         .btn {
+            outline: 0;
             width: 80%;
             height: 40px;
             padding: 0 5px;

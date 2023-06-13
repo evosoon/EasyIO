@@ -261,7 +261,6 @@ onMounted(() => {
     .Box {
         margin: 0;
         width: 100%;
-        // height: calc(100% - 200px);
         .tools {
             background-color: #fff;
             height: 50px;
@@ -304,16 +303,16 @@ onMounted(() => {
 
 @media screen and (max-width: 600px) {
     .Box {
-      
+              height: calc(100% - 200px);
         .DocList {
             width: 100%;
-            overflow: hidden;
                 display: flex;
                 flex-direction: column-reverse;
                 justify-content: center;
             .center {
                 width: 100%;
                 overflow: auto;
+                padding-bottom: 100px;
             }
         }
     }
